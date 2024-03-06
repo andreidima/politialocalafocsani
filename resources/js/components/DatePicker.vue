@@ -87,11 +87,11 @@ export default {
             // }
 
             // selectare date doar de la un moment dat
-            // if (typeof this.notBeforeDate !== 'undefined'){
-            //     const notBefore = new Date(this.notBeforeDate);
-            //     notBefore.setHours(0, 0, 0, 0);
-            //     return (date.getTime() < notBefore.getTime());
-            // }
+            if (typeof this.notBeforeDate !== 'undefined'){
+                const notBefore = new Date(this.notBeforeDate);
+                notBefore.setHours(0, 0, 0, 0);
+                return (date.getTime() < notBefore.getTime());
+            }
 
             // selectare date doar pana la un moment dat
             // if (typeof this.notAfterDate !== 'undefined'){

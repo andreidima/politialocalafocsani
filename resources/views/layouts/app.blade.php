@@ -102,6 +102,20 @@
         </nav>
     </header>
     @else
+    <header style="background-color: #060c17;">
+        <div class="container p-4" style="">
+            <div class="row">
+                <div class="col-lg-5">
+                    <img class="rounded-3" src="{{ url('imagini/politiaLogo.jpg') }}" style="width:100%">
+                </div>
+                <div class="col-lg-7 text-white text-end" style="font-size:20px;">
+                    <i class="fa-solid fa-envelope fa-lg" style="color:#a0ce4e"></i> WhatsApp: 0752 097 864
+                    <br>
+                    <i class="fa-solid fa-phone-flip fa-lg" style="color:#a0ce4e"></i> Dispecerat: 0748 067 300 / 0237 215 030 / 0237 215 005
+                </div>
+            </div>
+        </div>
+    </header>
     @endauth
 
     <main class="flex-shrink-0 py-4">
