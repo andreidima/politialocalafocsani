@@ -199,6 +199,8 @@ class PlataController extends Controller
         dd($request);
 
         $orderId = $_GET['orderId'];
+        $token = $_GET['token'];
+
         $plata = Plata::where('banca_order_id', $orderId)->first();
 
         if (!$plata) {
@@ -206,14 +208,20 @@ class PlataController extends Controller
             die();
         }
         
+        // $order_data_a = array(
+        //     "userName=".config('bancaTransilvania.userName', ''),
+        //     "password=".config('bancaTransilvania.password', ''),
+        //     "orderId=$orderId" 
+        // );
         $order_data_a = array(
-            "userName=".config('bancaTransilvania.userName', ''),
-            "password=".config('bancaTransilvania.password', ''),
-            "orderId=$orderId" 
+            "orderId=".$orderId,
+            "token=".$token,
+            "language=RO" 
         );
         $order_data = implode("&", $order_data_a);
 
-        $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
+        // $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
+        $getorderstatus_endpoint = config('bancaTransilvania.getFinisedPaymentInfoEndpoint', '');
 
         $ch = curl_init();//open connection 
         curl_setopt($ch,CURLOPT_URL,$getorderstatus_endpoint); 
