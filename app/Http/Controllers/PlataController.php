@@ -149,8 +149,7 @@ class PlataController extends Controller
                 );
         $order_data = implode("&", $order_data_a);
 
-        $register_endpoint = 'https://ecclients.btrl.ro:5443/payment/rest/register.do';
-        // $register_endpoint = 'https://ecclients.btrl.ro/payment/rest/register.do';
+        $register_endpoint = config('bancaTransilvania.registerEndpoint', '');
 
         //call API
         $ch = curl_init();//open connection
