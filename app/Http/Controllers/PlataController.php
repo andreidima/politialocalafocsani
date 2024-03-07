@@ -134,8 +134,6 @@ class PlataController extends Controller
             return redirect('/plati/adauga-plata-noua');
         }
 
-        $plata->save();
-
         $order_data_a = array(
                         "userName=test_iPay3_api",
                         "password=test_iPay3_ap!e4r",
@@ -168,11 +166,14 @@ class PlataController extends Controller
         // dd($order_result);
 
         $result_ibtpay = json_decode($order_result);
-        dd($result_ibtpay);
+        // dd($result_ibtpay);
 
         $ibtpay_url = $result_ibtpay->formUrl ?? null;
 
         curl_close($ch);
+
+        $plata->banca_order_id = $result_ibtpay['orderId'];
+        $plata->save();
 
         if ($ibtpay_url){
             // header("Location: http://www.example.com/");
