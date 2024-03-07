@@ -135,10 +135,8 @@ class PlataController extends Controller
         }
 
         $order_data_a = array(
-                        "userName=test_iPay3_api",
-                        "password=test_iPay3_ap!e4r",
-                        // "userName=PolitiaLocalaMunFoc_API",
-                        // "password=cCjFW94qQV_Ap!",
+                        "userName=".config('bancaTransilvania.userName', ''),
+                        "password=".config('bancaTransilvania.password', ''),
                         // "orderNumber=".$plata->id,
                         "orderNumber=".uniqid(),
                         // "amount=".$plata->pret,
@@ -198,6 +196,15 @@ class PlataController extends Controller
         // }
 
         echo "Back from the bank interface";
+
+
+        $orderId = $_GET['orderId'];
+        $plata = Plata::where('banca_order_id', $orderId)->first();
+
+        if (!$plata) {
+            echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
+            die();
+        }
 
         dd($_GET['orderId'], $request);
 
