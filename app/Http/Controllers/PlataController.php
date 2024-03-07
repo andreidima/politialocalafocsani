@@ -231,9 +231,6 @@ class PlataController extends Controller
         }
         curl_close($ch);
 
-        if ($ipay_api->debug == 'true') 
-                error_log(print_r('DEBUG: curl_response from '.$getorderstatus_endpoint.' : '.$order_result,true));
-
         $json_data = json_decode($order_result, true); 
 
         dd($json_data);
