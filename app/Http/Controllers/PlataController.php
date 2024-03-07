@@ -196,6 +196,7 @@ class PlataController extends Controller
 
         echo "Back from the bank interface";
 
+        dd($request);
 
         $orderId = $_GET['orderId'];
         $plata = Plata::where('banca_order_id', $orderId)->first();
