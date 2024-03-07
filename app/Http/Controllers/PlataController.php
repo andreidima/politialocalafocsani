@@ -196,7 +196,7 @@ class PlataController extends Controller
 
         echo "Back from the bank interface";
 
-        dd($request);
+        // dd($request);
 
         $orderId = $_GET['orderId'];
         $token = $_GET['token'];
