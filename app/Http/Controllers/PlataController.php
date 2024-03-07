@@ -168,6 +168,7 @@ class PlataController extends Controller
         // dd($order_result);
 
         $result_ibtpay = json_decode($order_result);
+        dd($result_ibtpay);
 
         $ibtpay_url = $result_ibtpay->formUrl ?? null;
 
