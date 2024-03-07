@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-lg-10 rounded-3 mx-auto" style="border:1px solid #e9ecef; border-left:0.25rem #e66800 solid; background-color:#fff9f5">
+                                    <div class="col-lg-10 py-2 rounded-3 mx-auto" style="border:1px solid #e9ecef; border-left:0.25rem #e66800 solid; background-color:#fff9f5">
                                         Categorie: <b>{{ $plata->tarif->categorie }}</b>
                                         <br>
                                         Durata: <b>{{ $plata->tarif->durata }}</b>
@@ -75,6 +75,9 @@
                                 </div>
 
                                 <div class="row mb-0 py-2 justify-content-center">
+                                    <div class="col-lg-6 mb-2 py-2 d-flex justify-content-center">
+                                        <img class="rounded-3" src="{{ url('imagini/logos-carduri.jpg') }}" style="width:100%">
+                                    </div>
                                     <div class="col-lg-12 py-2 d-flex justify-content-center">
                                         <a class="me-4 px-5 btn btn-lg btn-secondary text-white rounded-3" href="/plati/adauga-plata-pasul-1">Modifică</a>
                                         <button type="submit" class="px-5 btn btn-lg btn-primary text-white rounded-3">

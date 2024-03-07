@@ -197,7 +197,7 @@ class PlataController extends Controller
 
         echo "Back from the bank interface";
 
-        dd($request);
+        dd($_GET['orderId'], $request);
 
         // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
