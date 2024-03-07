@@ -135,18 +135,18 @@ class PlataController extends Controller
         }
 
         $order_data_a = array(
-                        "userName=".config('bancaTransilvania.userName', ''),
-                        "password=".config('bancaTransilvania.password', ''),
-                        // "orderNumber=".$plata->id,
-                        "orderNumber=".uniqid(),
-                        // "amount=".$plata->pret,
-                        // "amount=".($plata->pret/10),
-                        "amount=".($plata->pret/10),
-                        "currency=946",
-                        "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
-                        "description=Plata pentru accesul autovehiculelor de transport greu in Focsani. Categoria: ".$plata->tarif->categorie.". Durata: ".$plata->tarif->durata,
-                        // 'pageView=DESKTOP'
-                );
+            "userName=".config('bancaTransilvania.userName', ''),
+            "password=".config('bancaTransilvania.password', ''),
+            // "orderNumber=".$plata->id,
+            "orderNumber=".uniqid(),
+            // "amount=".$plata->pret,
+            // "amount=".($plata->pret/10),
+            "amount=".($plata->pret/10),
+            "currency=946",
+            "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
+            "description=Plata pentru accesul autovehiculelor de transport greu in Focsani. Categoria: ".$plata->tarif->categorie.". Durata: ".$plata->tarif->durata,
+            // 'pageView=DESKTOP'
+        );
         $order_data = implode("&", $order_data_a);
 
         $register_endpoint = config('bancaTransilvania.registerEndpoint', '');
@@ -204,8 +204,39 @@ class PlataController extends Controller
             echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
             die();
         }
+        
+        $order_data_a = array(
+            "userName=".config('bancaTransilvania.userName', ''),
+            "password=".config('bancaTransilvania.password', ''),
+            "orderId=$orderId" 
+        );
+        $order_data = implode("&", $order_data_a);
 
-        dd($_GET['orderId'], $request);
+        $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
+
+        $ch = curl_init();//open connection 
+        curl_setopt($ch,CURLOPT_URL,$getorderstatus_endpoint); 
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $order_data); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+        //handle curl errors
+        if (!$order_result = curl_exec($ch)) {
+                $curl_url = curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);
+                $curl_respcode = curl_getinfo($ch,CURLINFO_RESPONSE_CODE);
+                $curl_err = curl_error($ch);
+                $order->add_order_note( sprintf( "curl error when accessing '%s' , HTTP code: '%s', error message '%s'", $curl_url,$curl_respcode, $curl_err ));
+                error_log( print_r('curl error on order '.$order->get_id().' errormessage:'.$curl_err,true) );
+                curl_close($ch);
+        }
+        curl_close($ch);
+
+        if ($ipay_api->debug == 'true') 
+                error_log(print_r('DEBUG: curl_response from '.$getorderstatus_endpoint.' : '.$order_result,true));
+
+        $json_data = json_decode($order_result, true); 
+
+        dd($json_data);
 
         // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
