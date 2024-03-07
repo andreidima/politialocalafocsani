@@ -172,7 +172,7 @@ class PlataController extends Controller
 
         curl_close($ch);
 
-        $plata->banca_order_id = $result_ibtpay['orderId'];
+        $plata->banca_order_id = $result_ibtpay->orderId;
         $plata->save();
 
         if ($ibtpay_url){
