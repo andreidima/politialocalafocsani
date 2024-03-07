@@ -144,9 +144,10 @@ class PlataController extends Controller
                         // "orderNumber=".$plata->id,
                         "orderNumber=".uniqid(),
                         // "amount=".$plata->pret,
+                        // "amount=".($plata->pret/10),
                         "amount=".($plata->pret/10),
                         "currency=946",
-                        "returnUrl=https://andreidimatest.ro/finish.html",
+                        "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
                         "description=Plata pentru accesul autovehiculelor de transport greu in Focsani. Categoria: ".$plata->tarif->categorie.". Durata: ".$plata->tarif->durata,
                         // 'pageView=DESKTOP'
                 );
@@ -179,5 +180,25 @@ class PlataController extends Controller
         } else {
             return back()->with('error', 'Nu s-a putut initia plata');
         }
+    }
+
+    /**
+     * Show the step 3 Form for creating a new 'plata'.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adaugaPlataPasul3(Request $request)
+    {
+        // if(empty($request->session()->get('plata'))){
+        //     return redirect('/plati/adauga-plata-noua');
+        // } else {
+        //     $plata = $request->session()->get('plata');
+        // }
+
+        echo "Back from the bank interface";
+
+        dd($request);
+
+        // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
 }
