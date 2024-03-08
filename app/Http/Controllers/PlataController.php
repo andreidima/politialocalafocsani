@@ -208,7 +208,7 @@ class PlataController extends Controller
         // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
 
-    public function actualizareDetaliiPlataDinContBT(Request $request) {
+    public function actualizareDetaliiPlataDinContBT($orderId, Plata $plata) {
         $order_data_a = array(
             "userName=".config('bancaTransilvania.userName', ''),
             "password=".config('bancaTransilvania.password', ''),
