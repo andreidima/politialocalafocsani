@@ -188,40 +188,35 @@ class PlataController extends Controller
      */
     public function adaugaPlataPasul3(Request $request)
     {
-        // if(empty($request->session()->get('plata'))){
-        //     return redirect('/plati/adauga-plata-noua');
-        // } else {
-        //     $plata = $request->session()->get('plata');
-        // }
+        // Daca nu s-a ajuns aici dupa ce s-a facut o plata, clientul este trimis inapoi in pagina de start
+        if(!($orderId = $_GET['orderId'])){
+            return redirect('/plati/adauga-plata-noua');
+        } else {
+            // Daca nu se gaseste plata in DB
+            if (!($plata = Plata::where('banca_order_id', $orderId)->first())){
+                echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
+                die();
+            }
+        }
 
         echo "Back from the bank interface";
 
         // dd($request);
 
-        $orderId = $_GET['orderId'];
-        $token = $_GET['token'];
+        $this->actualizareDetaliiPlataDinContBT($orderId, $plata);
 
-        $plata = Plata::where('banca_order_id', $orderId)->first();
+        // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
+    }
 
-        if (!$plata) {
-            echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
-            die();
-        }
-        
-        // $order_data_a = array(
-        //     "userName=".config('bancaTransilvania.userName', ''),
-        //     "password=".config('bancaTransilvania.password', ''),
-        //     "orderId=$orderId" 
-        // );
+    public function actualizareDetaliiPlataDinContBT(Request $request) {
         $order_data_a = array(
-            "orderId=".$orderId,
-            "token=".$token,
-            "language=RO" 
+            "userName=".config('bancaTransilvania.userName', ''),
+            "password=".config('bancaTransilvania.password', ''),
+            "orderId=$orderId" 
         );
         $order_data = implode("&", $order_data_a);
 
-        // $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
-        $getorderstatus_endpoint = config('bancaTransilvania.getFinisedPaymentInfoEndpoint', '');
+        $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
 
         $ch = curl_init();//open connection 
         curl_setopt($ch,CURLOPT_URL,$getorderstatus_endpoint); 
@@ -243,7 +238,5 @@ class PlataController extends Controller
         $json_data = json_decode($order_result, true); 
 
         dd($json_data);
-
-        // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
 }
