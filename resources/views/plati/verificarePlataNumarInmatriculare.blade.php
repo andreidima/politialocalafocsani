@@ -21,6 +21,8 @@
                             <br> -->
                             <h4 class="mb-0 px-4 text-center" style="color:#ffffff">
                                 Accesul autovehiculelor de transport greu în Focșani
+                                <br><br>
+                                Verificare plată online
                             </h4>
                         </div>
                     </div>

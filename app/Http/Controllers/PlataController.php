@@ -141,7 +141,8 @@ class PlataController extends Controller
             "orderNumber=".uniqid(),
             // "amount=".$plata->pret,
             // "amount=".($plata->pret/10),
-            "amount=".($plata->pret/10),
+            // "amount=".($plata->pret/10),
+            "amount=5",
             "currency=946",
             "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
             "description=Plata pentru accesul autovehiculelor de transport greu in Focsani. Categoria: ".$plata->tarif->categorie.". Durata: ".$plata->tarif->durata,
@@ -263,7 +264,7 @@ class PlataController extends Controller
                 $plata->order_status_description = 'preautorizata';
                 break;
             case '2':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat și plata s-a efectuat cu success!';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat și plata s-a efectuat cu succes!';
                 break;
             case '3':
                 $plata->order_status_description = 'anulata';
