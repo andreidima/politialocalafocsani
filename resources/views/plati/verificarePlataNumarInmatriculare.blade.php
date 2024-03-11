@@ -103,7 +103,6 @@
 
                     <div class="row mb-0 justify-content-center">
                         <div class="col-lg-12 text-center">
-                            <br><br>
                             <a href="https://politialocalafocsani.ro/">Închide pagina si revino la site-ul principal</a>
                         </div>
                     </div>
