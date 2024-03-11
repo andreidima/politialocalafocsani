@@ -82,7 +82,13 @@
                     @else
                         <div class="row">
                             <div class="col-lg-12 mx-auto text-center">
-                                <b>Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim!</b>
+                                <b>
+                                    Nu am găsit în sistem această comandă.
+                                    <br>
+                                    Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda.
+                                    <br>
+                                    Mulțumim!
+                                </b>
                                 <br><br>
                             </div>
                         </div>
