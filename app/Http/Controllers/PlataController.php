@@ -366,11 +366,11 @@ class PlataController extends Controller
     public function verificarePlataNumarInmatriculare(Request $request)
     {
         $plati = null;
-        if ($nr_inmatriculare = $request->searchNumarInmatriculare){
-            $nr_inmatriculare = preg_replace("/[^a-zA-Z0-9]+/", "", $nr_inmatriculare);
-            $plati = Plata::where('nr_inmatriculare', $nr_inmatriculare)->whereDate('data_sfarsit', '>=', Carbon::today())->get();
+        if ($searchNumarInmatriculare = $request->searchNumarInmatriculare){
+            $searchNumarInmatriculare = preg_replace("/[^a-zA-Z0-9]+/", "", $searchNumarInmatriculare);
+            $plati = Plata::where('nr_inmatriculare', $searchNumarInmatriculare)->whereDate('data_sfarsit', '>=', Carbon::today())->get();
         }
 
-        return view('plati.verificarePlataNumarInmatriculare', compact('plati'));
+        return view('plati.verificarePlataNumarInmatriculare', compact('plati', 'searchNumarInmatriculare'));
     }
 }
