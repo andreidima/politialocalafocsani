@@ -257,13 +257,13 @@ class PlataController extends Controller
 
         switch ($plata->order_status){
             case '0':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția nu a fost finalizată';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar plata nu a fost finalizată';
                 break;
             case '1':
                 $plata->order_status_description = 'preautorizata';
                 break;
             case '2':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat și tranzacția s-a efectuat cu success!';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat și plata s-a efectuat cu success!';
                 break;
             case '3':
                 $plata->order_status_description = 'anulata';
@@ -275,7 +275,7 @@ class PlataController extends Controller
                 $plata->order_status_description = 'asteptare3ds';
                 break;
             case '6':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția a fost declinată.';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar plata a fost declinată.';
                 // din diferite motive (Card blocat, fonduri insuficiente, limită tranzacționare depășită, CVV greșit, card expirat, banca emitentă a deținătorului de card a declinat tranzacția, etc.
                 break;
             case '7':
