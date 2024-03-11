@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="row mb-0 py-2 justify-content-center">
-                        <div class="col-lg-12 py-2 d-flex justify-content-center">
+                        <div class="col-lg-12 py-2 justify-content-center">
                             Puteți verifica oricând accesul unui autovehicul vizitând pagina
                                 <a class="navbar-brand me-5" href="{{ url('/plati/verificare') }}">
                                     Acces autovehicule de transport greu în Focșani</a>.
