@@ -262,71 +262,103 @@ class PlataController extends Controller
         switch ($plata->order_status){
             case '0':
                 $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar plata nu a fost finalizată';
+                break;
             case '1':
                 $plata->order_status_description = 'preautorizata';
+                break;
             case '2':
                 $plata->order_status_description = 'Autovehiculul a fost înregistrat și plata s-a efectuat cu success!';
+                break;
             case '3':
                 $plata->order_status_description = 'anulata';
+                break;
             case '4':
                 $plata->order_status_description = 'rambursata';
+                break;
             case '5':
                 $plata->order_status_description = 'asteptare3ds';
+                break;
             case '6':
                 $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția a fost declinată din diferite motive (Card blocat, fonduri insuficiente, limită tranzacționare depășită, CVV greșit, card expirat, banca emitentă a deținătorului de card a declinat tranzacția, etc.)';
+                break;
             case '7':
                 $plata->order_status_description = 'rambursata_partial';
+                break;
         }
         
         switch ($plata->action_code){
             case '0':
                 $plata->action_code_description = 'Plata s-a efectuat cu succes.';
+                break;
             case '104':
                 $plata->action_code_description = 'Card restricționat (blocat temporar sau permanent din cauza lipsei plății sau a morții titularului de card).';
+                break;
             case '124':
                 $plata->action_code_description = 'Tranzacția nu poate fi autorizată din cauza acordului guvernului, băncii centrale sau instituției financiare, legi sau reglementări.';
+                break;
             case '320':
                 $plata->action_code_description = 'Card inactiv. Vă rugăm activați cardul.';
+                break;
             case '801':
                 $plata->action_code_description = 'Emitent indisponibil.';
+                break;
             case '803':
                 $plata->action_code_description = 'Card blocat. Contactați banca emitentă sau reîncercați tranzacția cu alt card.';
+                break;
             case '804':
                 $plata->action_code_description = 'Tranzacția nu este permisă. Contactați banca emitentă sau reîncercați tranzacția cu alt card.';
+                break;
             case '805':
                 $plata->action_code_description = 'Tranzacție respinsă.';
+                break;
             case '861':
                 $plata->action_code_description = 'Dată expirare card greșită.';
+                break;
             case '871':
                 $plata->action_code_description = 'CVV gresit.';
+                break;
             case '905':
                 $plata->action_code_description = 'Card invalid. Acesta nu există în baza de date.';
+                break;
             case '906':
                 $plata->action_code_description = 'Card expirat.';
+                break;
             case '913':
                 $plata->action_code_description = 'Tranzacție invalidă. Contactați banca emitentă sau reîncercați tranzacția cu alt card.';
+                break;
             case '914':
                 $plata->action_code_description = 'Cont invalid. Vă rugăm contactați banca emitentă.';
+                break;
             case '915':
                 $plata->action_code_description = 'Fonduri insuficiente.';
+                break;
             case '917':
                 $plata->action_code_description = 'Limită tranzacționare depășită.';
+                break;
             case '952':
                 $plata->action_code_description = 'Suspect de fraudă.';
+                break;
             case '998':
                 $plata->action_code_description = 'Tranzacția în rate nu este permisă cu acest card. Te rugăm să folosești un card de credit emis de Banca Transilvania.';
+                break;
             case '341016':
                 $plata->action_code_description = '3DS2 authentication is declined by Authentication Response (ARes) – issuer';
+                break;
             case '341017':
                 $plata->action_code_description = '3DS2 authentication status in ARes is unknown - issuer';
+                break;
             case '341018':
                 $plata->action_code_description = '3DS2 CReq cancelled - client';
+                break;
             case '341019':
                 $plata->action_code_description = '3DS2 CReq failed - client/issuer';
+                break;
             case '341020':
                 $plata->action_code_description = '3DS2 unknown status in RReq - issuer';
+                break;
             default:
                 $plata->action_code_description = 'Tranzacție refuzată, vă rugăm reîncercați.';
+                break;
         }
 
         $plata->update();
