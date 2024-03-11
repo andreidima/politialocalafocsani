@@ -39,7 +39,7 @@
 
                 @include ('errors.errors')
 
-                    @if ($plata)
+                    @isset ($plata)
                         <div class="row">
                             <div class="col-lg-12 mx-auto text-center">
                                 @switch($plata->order_status)
@@ -87,7 +87,7 @@
                                 </h6>
                             </div>
                         </div>
-                    @endif
+                    @endisset
 
                     <div class="row mb-0 justify-content-center">
                         <div class="col-lg-12 text-center">
