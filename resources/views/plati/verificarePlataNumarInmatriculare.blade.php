@@ -86,7 +86,7 @@
                                                 {{ $plata->action_code_description }}
                                             </h5>
                                         @endif
-                                    @else
+                                    @empty
                                     @endforelse
                                 </div>
                             </div>
