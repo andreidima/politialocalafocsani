@@ -47,10 +47,10 @@
                                     </div>
                                 </div>
                                 <div class="row custom-search-form justify-content-center">
-                                    <button class="btn btn-sm btn-primary text-white col-md-4 me-3 border border-dark rounded-3" type="submit">
+                                    <button class="btn btn-primary text-white col-md-4 me-3 border border-dark rounded-3" type="submit">
                                         <i class="fas fa-search text-white me-1"></i>Caută
                                     </button>
-                                    <a class="btn btn-sm btn-secondary text-white col-md-4 border border-dark rounded-3" href="{{ url()->current() }}" role="button">
+                                    <a class="btn btn-secondary text-white col-md-4 border border-dark rounded-3" href="{{ url()->current() }}" role="button">
                                         <i class="far fa-trash-alt text-white me-1"></i>Resetează căutarea
                                     </a>
                                 </div>
