@@ -203,7 +203,7 @@ class PlataController extends Controller
 
         $plata = $this->actualizareDetaliiPlataDinContBT($orderId, $plata);
 
-        dd('Back', $json_data, $plata);
+        dd('Back', $plata);
         // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
 
