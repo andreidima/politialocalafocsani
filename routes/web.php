@@ -26,7 +26,7 @@ Route::get('/plati/adauga-plata-pasul-2', [PlataController::class, 'adaugaPlataP
 Route::post('/plati/adauga-plata-pasul-2', [PlataController::class, 'postAdaugaPlataPasul2']);
 Route::get('/plati/adauga-plata-pasul-3', [PlataController::class, 'adaugaPlataPasul3']);
 
-Route::get('/plati/verificare', [PlataController::class, 'verificare']);
+Route::get('/plati/verificare-plata-numar-inmatriculare', [PlataController::class, 'verificarePlataNumarInmatriculare']);
 
 
 Route::group(['middleware' => 'auth'], function () {

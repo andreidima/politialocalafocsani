@@ -82,10 +82,10 @@
                     <div class="row mb-0 justify-content-center">
                         <div class="col-lg-12 text-center">
                             Puteți verifica oricând accesul unui autovehicul vizitând pagina
-                                <a href="{{ url('/plati/verificare') }}">
+                                <a href="{{ url('/plati/verificare-plata-numar-inmatriculare') }}">
                                     Acces autovehicule de transport greu în Focșani</a>.
                             <br>
-                            Linkul către această pagina se află postat și pe site-ul Poliției Focșani.
+                            Linkul către pagina de verificare se află postat și pe site-ul principal al Poliției Focșani.
                             <br><br>
                             <a href="https://politialocalafocsani.ro/">Închide pagina si revino la site-ul principal</a>
                         </div>
