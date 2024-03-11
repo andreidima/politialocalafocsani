@@ -43,8 +43,16 @@
                                 @csrf
                                 <div class="row mb-1 custom-search-form justify-content-center">
                                     <div class="col-lg-3">
-                                        <input type="text" class="form-control rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Nume sau tel. pacient" value="{{ $searchNumarInmatriculare }}">
+                                        <input type="text" class="form-control rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
                                     </div>
+                                </div>
+                                <div class="row custom-search-form justify-content-center">
+                                    <button class="btn btn-sm btn-primary text-white col-md-4 me-3 border border-dark rounded-3" type="submit">
+                                        <i class="fas fa-search text-white me-1"></i>Caută
+                                    </button>
+                                    <a class="btn btn-sm btn-secondary text-white col-md-4 border border-dark rounded-3" href="{{ url()->current() }}" role="button">
+                                        <i class="far fa-trash-alt text-white me-1"></i>Resetează căutarea
+                                    </a>
                                 </div>
                             </form>
                         </div>
@@ -95,11 +103,6 @@
 
                     <div class="row mb-0 justify-content-center">
                         <div class="col-lg-12 text-center">
-                            Puteți verifica oricând accesul unui autovehicul vizitând pagina
-                                <a href="{{ url('/plati/verificare') }}">
-                                    Acces autovehicule de transport greu în Focșani</a>.
-                            <br>
-                            Linkul către pagina de verificare se află postat și pe site-ul principal al Poliției Focșani.
                             <br><br>
                             <a href="https://politialocalafocsani.ro/">Închide pagina si revino la site-ul principal</a>
                         </div>
