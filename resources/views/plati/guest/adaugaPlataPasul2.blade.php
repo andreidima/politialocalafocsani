@@ -15,10 +15,10 @@
                 >
                     <div class="row">
                         <div class="col-lg-12">
-                            {{-- <h4 class="mb-0 px-4" style="color:#ffffff">
+                            <!-- {{-- <h4 class="mb-0 px-4" style="color:#ffffff">
                                 Accesul autovehiculelor de transport greu
                             </h4>
-                            <br> --}}
+                            <br> --}} -->
                             <h4 class="mb-0 px-4 text-center" style="color:#ffffff">
                                 Accesul autovehiculelor de transport greu în Focșani
                                 <br><br>
@@ -49,7 +49,7 @@
                                         Plată online a accesului autovehiculelor de transport greu așa cum este prevăzut în H.C.L. 445/2023 cu modificările și completările ulterioare (H.C.L. 26/2024).
                                         <br>
                                         <br>
-                                        {{-- Art.3(3)-Taxele pentru eliberarea avizului de acces transport greu/autotizație unică de transport greu în funcție de grupa de clasificare a autovehicului de transport sunt următoarele: --}}
+                                        <!-- Art.3(3)-Taxele pentru eliberarea avizului de acces transport greu/autotizație unică de transport greu în funcție de grupa de clasificare a autovehicului de transport sunt următoarele: -->
                                     </div>
                                 </div>
 
@@ -70,7 +70,7 @@
                                         <br>
                                         Preț: <b>{{ $plata->pret }} lei</b>
 
-                                        {{-- Art.3(3)-Taxele pentru eliberarea avizului de acces transport greu/autotizație unică de transport greu în funcție de grupa de clasificare a autovehicului de transport sunt următoarele: --}}
+                                        <!-- Art.3(3)-Taxele pentru eliberarea avizului de acces transport greu/autotizație unică de transport greu în funcție de grupa de clasificare a autovehicului de transport sunt următoarele: -->
                                     </div>
                                 </div>
 
@@ -83,7 +83,7 @@
                                         <button type="submit" class="px-5 btn btn-lg btn-primary text-white rounded-3">
                                             Plătește
                                         </button>
-                                        {{-- <a class="btn btn-lg btn-secondary text-white rounded-3" href="https://politialocalafocsani.ro/">Renunță</a> --}}
+                                        <!-- <a class="btn btn-lg btn-secondary text-white rounded-3" href="https://politialocalafocsani.ro/">Renunță</a> -->
                                     </div>
                                 </div>
                             </form>

@@ -199,30 +199,27 @@ class PlataController extends Controller
             }
         }
 
-        echo "Back from the bank interface";
-
         $plata = $this->actualizareDetaliiPlataDinContBT($orderId, $plata);
 
-        dd('Back', $plata);
-        // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
+        return view('plati.guest.adaugaPlataPasul3', compact('plata'));
     }
 
     public function actualizareDetaliiPlataDinContBT($orderId, Plata $plata) {
         $order_data_a = array(
             "userName=".config('bancaTransilvania.userName', ''),
             "password=".config('bancaTransilvania.password', ''),
-            "orderId=$orderId" 
+            "orderId=$orderId"
         );
         $order_data = implode("&", $order_data_a);
 
         $getorderstatus_endpoint = config('bancaTransilvania.getOrderStatusEndpoint', '');
 
-        $ch = curl_init();//open connection 
-        curl_setopt($ch,CURLOPT_URL,$getorderstatus_endpoint); 
+        $ch = curl_init();//open connection
+        curl_setopt($ch,CURLOPT_URL,$getorderstatus_endpoint);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $order_data); 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $order_data);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         //handle curl errors
         if (!$order_result = curl_exec($ch)) {
                 $curl_url = curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);
@@ -234,9 +231,9 @@ class PlataController extends Controller
         }
         curl_close($ch);
 
-        $json_data = json_decode($order_result, true);        
+        $json_data = json_decode($order_result, true);
 
-        
+
         if (array_key_exists('errorCode',$json_data))
             $plata->error_code =  $json_data['errorCode'];
         if (array_key_exists('errorMessage',$json_data))
@@ -260,13 +257,13 @@ class PlataController extends Controller
 
         switch ($plata->order_status){
             case '0':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar plata nu a fost finalizată';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția nu a fost finalizată';
                 break;
             case '1':
                 $plata->order_status_description = 'preautorizata';
                 break;
             case '2':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat și plata s-a efectuat cu success!';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat și tranzacția s-a efectuat cu success!';
                 break;
             case '3':
                 $plata->order_status_description = 'anulata';
@@ -284,7 +281,7 @@ class PlataController extends Controller
                 $plata->order_status_description = 'rambursata_partial';
                 break;
         }
-        
+
         switch ($plata->action_code){
             case '0':
                 $plata->action_code_description = 'Plata s-a efectuat cu succes.';
