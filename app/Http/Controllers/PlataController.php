@@ -275,7 +275,8 @@ class PlataController extends Controller
                 $plata->order_status_description = 'asteptare3ds';
                 break;
             case '6':
-                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția a fost declinată din diferite motive (Card blocat, fonduri insuficiente, limită tranzacționare depășită, CVV greșit, card expirat, banca emitentă a deținătorului de card a declinat tranzacția, etc.)';
+                $plata->order_status_description = 'Autovehiculul a fost înregistrat, dar tranzacția a fost declinată.';
+                // din diferite motive (Card blocat, fonduri insuficiente, limită tranzacționare depășită, CVV greșit, card expirat, banca emitentă a deținătorului de card a declinat tranzacția, etc.
                 break;
             case '7':
                 $plata->order_status_description = 'rambursata_partial';

@@ -51,7 +51,6 @@
                                     @break
                                 @default
                             @endswitch
-                            <br>
                             @if ($plata->action_code != '0')
                                 <h3 class="text-danger">
                                     {{ $plata->action_code_description }}
