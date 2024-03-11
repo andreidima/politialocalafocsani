@@ -41,7 +41,7 @@
                         <div class="col-lg-12 mx-auto">
                             <form class="needs-validation" novalidate method="GET" action="{{ url()->current() }}">
                                 @csrf
-                                <div class="row mb-1 custom-search-form justify-content-center">
+                                <div class="row mb-4 custom-search-form justify-content-center">
                                     <div class="col-lg-3">
                                         <input type="text" class="form-control rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
                                     </div>
