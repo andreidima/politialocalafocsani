@@ -257,7 +257,7 @@ class PlataController extends Controller
         if (array_key_exists('date',$json_data))
             $plata->date =  $json_data['date'];
         if (array_key_exists('orderDescription',$json_data))
-            $plata->orderDescription =  $json_data['orderDescription'];
+            $plata->order_description =  $json_data['orderDescription'];
 
         switch ($plata->order_status){
             case '0':
@@ -278,7 +278,7 @@ class PlataController extends Controller
                 $plata->order_status_description = 'rambursata_partial';
         }
         
-        switch ($plata->actionCode){
+        switch ($plata->action_code){
             case '0':
                 $plata->action_code_description = 'Plata s-a efectuat cu succes.';
             case '104':
@@ -331,6 +331,6 @@ class PlataController extends Controller
 
         $plata->update();
 
-        dd($json_data);
+        dd($json_data, $plata);
     }
 }
