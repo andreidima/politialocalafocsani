@@ -195,8 +195,9 @@ class PlataController extends Controller
         } else {
             // Daca nu se gaseste plata in DB
             if (!($plata = Plata::where('banca_order_id', $orderId)->first())){
-                echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
-                die();
+                return view('plati.guest.adaugaPlataPasul3');
+                // echo 'Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim';
+                // die();
             }
         }
 
