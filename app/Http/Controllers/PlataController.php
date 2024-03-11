@@ -368,7 +368,10 @@ class PlataController extends Controller
         $plati = null;
         if ($searchNumarInmatriculare = $request->searchNumarInmatriculare){
             $searchNumarInmatriculare = preg_replace("/[^a-zA-Z0-9]+/", "", $searchNumarInmatriculare);
-            $plati = Plata::where('nr_inmatriculare', $searchNumarInmatriculare)->whereDate('data_sfarsit', '>=', Carbon::today())->get();
+            $plati = Plata::where('nr_inmatriculare', $searchNumarInmatriculare)
+                ->whereDate('data_sfarsit', '>=', Carbon::today())
+                ->orderBy('data_inceput', 'desc')
+                ->get();
         }
 
         return view('plati.verificarePlataNumarInmatriculare', compact('plati', 'searchNumarInmatriculare'));
