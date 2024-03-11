@@ -39,45 +39,55 @@
 
                 @include ('errors.errors')
 
-                    <div class="row">
-                        <div class="col-lg-12 mx-auto text-center">
-                            @switch($plata->order_status)
-                                @case(0)
-                                @case(6)
-                                    <h3 class="text-danger">{{ $plata->order_status_description }}</h3>
-                                    @break
-                                @case(2)
-                                    <h3 class="text-success">{{ $plata->order_status_description }}</h3>
-                                    @break
-                                @default
-                            @endswitch
-                            @if ($plata->action_code != '0')
-                                <h3 class="text-danger">
-                                    {{ $plata->action_code_description }}
-                                </h3>
-                            @endif
-                        </div>
-                        <div class="col-lg-12 mx-auto">
-                            <div class="row mb-4">
-                                <div class="col-lg-10 py-2 rounded-3 mx-auto" style="border:1px solid #e9ecef; border-left:0.25rem #e66800 solid; background-color:#fff9f5">
-                                    Categorie: <b>{{ $plata->tarif->categorie }}</b>
-                                    <br>
-                                    Durata: <b>{{ $plata->tarif->durata }}</b>
-                                    <br>
-                                    Valabilitate:
-                                        <b>
-                                            {{ $plata->data_inceput ? \Carbon\Carbon::parse($plata->data_inceput)->isoFormat('DD.MM.YYYY') : '' }}
-                                            -
-                                            {{ $plata->data_sfarsit ? \Carbon\Carbon::parse($plata->data_sfarsit)->isoFormat('DD.MM.YYYY') : '' }}
-                                        </b>
-                                    <br>
-                                    Număr înmatriculare: <b>{{ $plata->nr_inmatriculare }}</b>
-                                    <br>
-                                    Preț: <b>{{ $plata->pret }} lei</b>
+                    @if ($plata)
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto text-center">
+                                @switch($plata->order_status)
+                                    @case(0)
+                                    @case(6)
+                                        <h3 class="text-danger">{{ $plata->order_status_description }}</h3>
+                                        @break
+                                    @case(2)
+                                        <h3 class="text-success">{{ $plata->order_status_description }}</h3>
+                                        @break
+                                    @default
+                                @endswitch
+                                @if ($plata->action_code != '0')
+                                    <h3 class="text-danger">
+                                        {{ $plata->action_code_description }}
+                                    </h3>
+                                @endif
+                            </div>
+                            <div class="col-lg-12 mx-auto">
+                                <div class="row mb-4">
+                                    <div class="col-lg-10 py-2 rounded-3 mx-auto" style="border:1px solid #e9ecef; border-left:0.25rem #e66800 solid; background-color:#fff9f5">
+                                        Categorie: <b>{{ $plata->tarif->categorie }}</b>
+                                        <br>
+                                        Durata: <b>{{ $plata->tarif->durata }}</b>
+                                        <br>
+                                        Valabilitate:
+                                            <b>
+                                                {{ $plata->data_inceput ? \Carbon\Carbon::parse($plata->data_inceput)->isoFormat('DD.MM.YYYY') : '' }}
+                                                -
+                                                {{ $plata->data_sfarsit ? \Carbon\Carbon::parse($plata->data_sfarsit)->isoFormat('DD.MM.YYYY') : '' }}
+                                            </b>
+                                        <br>
+                                        Număr înmatriculare: <b>{{ $plata->nr_inmatriculare }}</b>
+                                        <br>
+                                        Preț: <b>{{ $plata->pret }} lei</b>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto text-center">
+                                <h6 class="text-center">
+                                    Nu am găsit în sistem această comandă. Dacă plata ta a fost procesată, și banii ți-au fost luați din cont, te rugăm să ne comunici, pentru a corecta comanda. Mulțumim!
+                                </h6>
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="row mb-0 justify-content-center">
                         <div class="col-lg-12 text-center">
