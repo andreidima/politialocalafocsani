@@ -41,17 +41,17 @@
                         <div class="col-lg-12 mb-4 mx-auto">
                             <form class="needs-validation" novalidate method="GET" action="{{ url()->current() }}">
                                 @csrf
-                                <div class="row mb-1 custom-search-form justify-content-center">
-                                    <div class="col-lg-12 d-flex justify-content-center">
-                                        <label class="me-1">Caută un autovehicul după numărul de înmatriculare</label>
-                                        <input type="text" class="form-control col-lg-3 rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
+                                <div class="row mb-4 custom-search-form justify-content-center">
+                                    <div class="col-lg-6 justify-content-center">
+                                        <label class="me-1 ps-3">Caută un autovehicul după numărul de înmatriculare:</label>
+                                        <input type="text" class="form-control rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
                                     </div>
                                 </div>
                                 <div class="row custom-search-form justify-content-center">
-                                    <button class="btn btn-primary text-white col-md-4 me-3 border border-dark rounded-3" type="submit">
+                                    <button class="btn btn-primary text-white col-lg-3 mb-3 mx-1 border border-dark rounded-3" type="submit">
                                         <i class="fas fa-search text-white me-1"></i>Caută
                                     </button>
-                                    <a class="btn btn-secondary text-white col-md-4 border border-dark rounded-3" href="{{ url()->current() }}" role="button">
+                                    <a class="btn btn-secondary text-white col-lg-3 mb-3 mx-1 border border-dark rounded-3" href="{{ url()->current() }}" role="button">
                                         <i class="far fa-trash-alt text-white me-1"></i>Resetează căutarea
                                     </a>
                                 </div>
