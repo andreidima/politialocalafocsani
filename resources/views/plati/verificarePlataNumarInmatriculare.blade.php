@@ -44,7 +44,7 @@
                                 <div class="row mb-1 custom-search-form justify-content-center">
                                     <div class="col-lg-12 d-flex justify-content-center">
                                         <label class="me-1">Caută un autovehicul după numărul de înmatriculare</label>
-                                        <input type="text" class="form-control rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
+                                        <input type="text" class="form-control col-lg-3 rounded-3" id="searchNumarInmatriculare" name="searchNumarInmatriculare" placeholder="Numă înmatriculare" value="{{ $searchNumarInmatriculare }}">
                                     </div>
                                 </div>
                                 <div class="row custom-search-form justify-content-center">
