@@ -201,10 +201,9 @@ class PlataController extends Controller
 
         echo "Back from the bank interface";
 
-        // dd($request);
+        $plata = $this->actualizareDetaliiPlataDinContBT($orderId, $plata);
 
-        $this->actualizareDetaliiPlataDinContBT($orderId, $plata);
-
+        dd('Back', $json_data, $plata);
         // return view('plati.guest.adaugaPlataPasul2', compact('plata'));
     }
 
@@ -363,6 +362,6 @@ class PlataController extends Controller
 
         $plata->update();
 
-        dd($json_data, $plata);
+        return $plata;
     }
 }
