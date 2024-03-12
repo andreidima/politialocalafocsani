@@ -8,6 +8,7 @@ use App\Models\Plata;
 use App\Models\Tarif;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class PlataController extends Controller
 {
@@ -67,7 +68,7 @@ class PlataController extends Controller
             $request->validate([
                 'tarif_id' => 'required',
                 'data_inceput' => 'required|date|after:yesterday',
-                'nr_inmatriculare' => 'required',
+                'nr_inmatriculare' => 'required|min:5',
                 // 'email' => 'nullable|max:255|email:rfc,dns',
                 // 'telefon' => 'max:255',
                 // 'gdpr' => 'required',
@@ -367,13 +368,33 @@ class PlataController extends Controller
 
     public function verificarePlataNumarInmatriculare(Request $request)
     {
+        $searchNumarInmatriculare = $request->searchNumarInmatriculare;
         $plati = null;
-        if ($searchNumarInmatriculare = $request->searchNumarInmatriculare){
+
+        session()->forget('eroare');
+
+        if (!$searchNumarInmatriculare){
+            return view('plati.verificarePlataNumarInmatriculare', compact('plati', 'searchNumarInmatriculare'));
+        } else if (strlen($searchNumarInmatriculare) < 5){
+            session()->flash('eroare', 'Numărul de înmatriculare trebuie sa conțină minim 5 caractere');
+            return view('plati.verificarePlataNumarInmatriculare', compact('plati', 'searchNumarInmatriculare'));
+        } else {
             $searchNumarInmatriculare = preg_replace("/[^a-zA-Z0-9]+/", "", $searchNumarInmatriculare);
             $plati = Plata::where('nr_inmatriculare', $searchNumarInmatriculare)
                 ->whereDate('data_sfarsit', '>=', Carbon::today())
                 ->orderBy('data_inceput', 'desc')
                 ->get();
+        }
+
+        // Daca sunt plati care nu au actualizate platile cu datele de la banca, se face reverificarea acum
+        if ($plati){
+            foreach ($plati as $plata) {
+                // Daca a existat o conexiune cu banca, dar inca nu au fost aduse informatiile din contul bancar, se aduc acum
+                if ($plata->banca_order_id && !$plata->order_status) {
+                    $this->actualizareDetaliiPlataDinContBT($plata->banca_order_id, $plata);
+                }
+            }
+
         }
 
         return view('plati.verificarePlataNumarInmatriculare', compact('plati', 'searchNumarInmatriculare'));
