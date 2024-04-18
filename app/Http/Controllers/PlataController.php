@@ -142,7 +142,7 @@ class PlataController extends Controller
             "password=".config('bancaTransilvania.password', ''),
             "orderNumber=".uniqid(),
             // "amount=5",
-            "amount=".$plata->pret,
+            "amount=".$plata->pret * 100, // because the bank will start the number from the right with those 2 decimals
             "currency=946",
             // "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
             "returnUrl=https://plati.politialocalafocsani.ro/plati/adauga-plata-pasul-3",
