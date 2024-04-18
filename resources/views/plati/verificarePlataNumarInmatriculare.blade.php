@@ -60,7 +60,7 @@
                             </form>
                         </div>
                         <div class="col-lg-12 mx-auto">
-                            @if ($plati->count())
+                            @if ($plati && $plati->count())
                                 @foreach ($plati as $plata)
                                     <div class="row mb-4">
                                         <div class="col-lg-10 py-2 rounded-3 mx-auto" style="border:1px solid #e9ecef; border-left:0.25rem #e66800 solid; background-color:#fff9f5">
