@@ -139,10 +139,11 @@ class PlataController extends Controller
             "userName=".config('bancaTransilvania.userName', ''),
             "password=".config('bancaTransilvania.password', ''),
             "orderNumber=".uniqid(),
-            "amount=5",
             // "amount=".$plata->pret,
+            "amount=5",
             "currency=946",
-            "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
+            // "returnUrl=https://politialocalafocsani.validsoftware.eu/plati/adauga-plata-pasul-3",
+            "returnUrl=https://plati.politialocalafocsani.ro/plati/adauga-plata-pasul-3",
             "description=Plata pentru accesul autovehiculelor de transport greu in Focsani. Categoria: ".$plata->tarif->categorie.". Durata: ".$plata->tarif->durata,
             // 'pageView=DESKTOP'
         );
@@ -191,6 +192,7 @@ class PlataController extends Controller
         if(!($orderId = $_GET['orderId'])){
             return redirect('/plati/adauga-plata-noua');
         } else {
+            dd($orderId);
             // Daca nu se gaseste plata in DB
             if (!($plata = Plata::where('banca_order_id', $orderId)->first())){
                 return view('plati.guest.adaugaPlataPasul3');
