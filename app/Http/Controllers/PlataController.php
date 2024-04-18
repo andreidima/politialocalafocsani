@@ -192,7 +192,6 @@ class PlataController extends Controller
         if(!($orderId = $_GET['orderId'])){
             return redirect('/plati/adauga-plata-noua');
         } else {
-            dd($orderId);
             // Daca nu se gaseste plata in DB
             if (!($plata = Plata::where('banca_order_id', $orderId)->first())){
                 return view('plati.guest.adaugaPlataPasul3');
