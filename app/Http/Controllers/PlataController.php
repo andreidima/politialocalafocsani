@@ -66,6 +66,8 @@ class PlataController extends Controller
 
         $plata->fill(
             $request->validate([
+                'nume_prenume' => 'required',
+                'telefon' => 'required',
                 'tarif_id' => 'required',
                 'data_inceput' => 'required|date|after:yesterday',
                 'nr_inmatriculare' => 'required|min:5',

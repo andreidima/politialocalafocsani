@@ -96,6 +96,24 @@
                                 </div> -->
 
                                 <!-- <div class="row mb-4 pt-2 rounded-3" style="border:1px solid #e9ecef; border-left:0.25rem darkcyan solid; background-color:rgb(241, 250, 250)"> -->
+                                <div class="row mb-4 justify-content-center">
+                                    <div class="col-lg-3 mb-4">
+                                        <label for="nume_prenume" class="mb-0 ps-3">Nume prenume<span class="text-danger">*</span></label>
+                                        <input
+                                            type="text"
+                                            class="form-control bg-white rounded-3 {{ $errors->has('nume_prenume') ? 'is-invalid' : '' }}"
+                                            name="nume_prenume"
+                                            value="{{ old('nume_prenume', $plata->nume_prenume) }}">
+                                    </div>
+                                    <div class="col-lg-3 mb-4">
+                                        <label for="telefon" class="mb-0 ps-3">Telefon<span class="text-danger">*</span></label>
+                                        <input
+                                            type="text"
+                                            class="form-control bg-white rounded-3 {{ $errors->has('telefon') ? 'is-invalid' : '' }}"
+                                            name="telefon"
+                                            value="{{ old('telefon', $plata->telefon) }}">
+                                    </div>
+                                </div>
                                 <div class="row mb-4">
                                     <div class="col-lg-5 mb-4">
                                         <label for="tarif_id" class="mb-0 ps-3">Categorie/durata<span class="text-danger">*</span></label>
