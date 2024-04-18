@@ -138,8 +138,7 @@ class PlataController extends Controller
         $order_data_a = array(
             "userName=".config('bancaTransilvania.userName', ''),
             "password=".config('bancaTransilvania.password', ''),
-            // "orderNumber=".uniqid(),
-            "orderNumber=".$plata->id,
+            "orderNumber=".uniqid(),
             "amount=5",
             // "amount=".$plata->pret,
             "currency=946",
