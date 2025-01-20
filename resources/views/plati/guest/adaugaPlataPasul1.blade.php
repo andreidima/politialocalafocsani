@@ -46,7 +46,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        Plată online a accesului autovehiculelor de transport greu așa cum este prevăzut în H.C.L. 445/2023 cu modificările și completările ulterioare (H.C.L. 26/2024).
+                                        Plată online a accesului autovehiculelor de transport greu așa cum este prevăzut în H.C.L. 445/2023 cu modificările și completările ulterioare (H.C.L. 501/2024).
                                         <br>
                                         <br>
                                         <!-- Art.3(3)-Taxele pentru eliberarea avizului de acces transport greu/autotizație unică de transport greu în funcție de grupa de clasificare a autovehicului de transport sunt următoarele: -->
